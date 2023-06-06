@@ -1,18 +1,20 @@
-# completekubernetescuster
-A complete kubernetes cluster, using terraform, eks, helm based gitops model
-
+# A Docker container processing terraform
+A gitops terraform deployment, secure, fast, always avaliable, run standalone.
 
 How to start with?
 
-docker build --pull --rm -f "terraform\Dockerfile" -t completekubernetescuster:latest
+1 - git clone
 
-when container is built, start it with 2 vars loaded.
+git clone https://github.com/leonardodutra/docker-terraform-deploy
 
-docker build --pull --rm -f "terraform\Dockerfile" -t completekubernetescuster:latest
+2 - create a docker image named docker-terraform tag latest.
 
+docker build --pull --rm -f "terraform\Dockerfile" -t docker-terraform:latest
 
-aws_access_key_id
-YYYYYYYYYYYYYYYYYYYYYYYYYYYY
+3 - when container image has built(you can validate using command => docker images), you need to start container passing aws-cli credentials as enviroment variables.
 
-aws_secret_access_key
-XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+(must to be implement it, i using vscode with docker module that provide a button that solve this situation) 
+examples:
+docker run --env VAR1=value1 --env VAR2=value2
+aws_access_key_id = YYYYYYYYYYYYYYYYYYYYYYYYYYYY
+aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXX
