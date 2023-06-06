@@ -3,7 +3,7 @@ A gitops terraform deployment, secure, fast, always avaliable, run standalone.
 
 How to start with?
 
-1 - Create manualy a s3 bucket to save you terraform state, set values in backend.tf file, region and BucketName.
+1 - Create manualy a s3 bucket to save your terraform state, set values in backend.tf file, region and BucketName.
 access you aws console web accesing s3 services, create bucket.
 
 2- git clone
