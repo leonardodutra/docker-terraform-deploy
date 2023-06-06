@@ -19,4 +19,6 @@ docker build --pull --rm -f "terraform\Dockerfile" -t docker-terraform:latest
 docker build . -t docker_terrafom --env aws_access_key_id=YYYYYYYYYYYYYYYYYYYYYYYYYYYY --env aws_secret_access_key=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
-Here the magic happens, you can edit deploy.sh to set possible terraform destroy when necessary.
+Here the magic happens, you started a new infra-structure-as-code using terraform. a completely GitOps solution delivery to small organizations.
+
+Additionaly you can run terraform destroy when necessary editing deploy.sh script.
