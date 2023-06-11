@@ -49,10 +49,8 @@ ENV PATH=~/.local/bin:$PATH
 #ADD templates /usr/local/bin/templates
 #RUN mkdir ~/.aws
 COPY ./backend.tf /
-COPY ./variables.tf /
-COPY ./vpc.tf /
 COPY ./main.tf /
-COPY ./ec2.tf /
+
 COPY ./deploy.sh /
 
 ARG aws_access_key_id
