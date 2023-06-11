@@ -100,6 +100,11 @@ resource "aws_instance" "web_instance" {
   #!/bin/bash -ex
 
   amazon-linux-extras install nginx1 -y
+  amazon-linux-extras enable php8.0
+  yum clean metadata
+  yum install php php-cli php-mysqlnd php-pdo php-common php-fpm -y
+  yum install php-gd php-mbstring php-xml php-dom php-intl php-simplexml -y
+  systemctl start php-fpm
   systemctl enable nginx
   systemctl start nginx
   EOF
