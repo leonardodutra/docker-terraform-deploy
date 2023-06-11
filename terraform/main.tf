@@ -14,7 +14,7 @@ resource "aws_vpc" "some_custom_vpc" {
 resource "aws_subnet" "some_public_subnet" {
   vpc_id            = aws_vpc.some_custom_vpc.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1a"
+  availability_zone = "sa-east-1a"
 
   tags = {
     Name = "Some Public Subnet"
@@ -24,7 +24,7 @@ resource "aws_subnet" "some_public_subnet" {
 resource "aws_subnet" "some_private_subnet" {
   vpc_id            = aws_vpc.some_custom_vpc.id
   cidr_block        = "10.0.2.0/24"
-  availability_zone = "us-east-1a"
+  availability_zone = "sa-east-1a"
 
   tags = {
     Name = "Some Private Subnet"
@@ -88,9 +88,9 @@ resource "aws_security_group" "web_sg" {
 }
 
 resource "aws_instance" "web_instance" {
-  ami           = "ami-0533f2ba8a1995cf9"
-  instance_type = "t2.nano"
-  key_name      = "MyKeyPair2"
+  ami           = "ami-0555c5c3b52744258"
+  instance_type = "t2.micro"
+  key_name      = "terraform"
 
   subnet_id                   = aws_subnet.some_public_subnet.id
   vpc_security_group_ids      = [aws_security_group.web_sg.id]
@@ -106,6 +106,6 @@ resource "aws_instance" "web_instance" {
   EOF
 
   tags = {
-    "Name" : "Kanye"
+    "Name" : "TerraformEc2"
   }
 }

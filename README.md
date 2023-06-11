@@ -2,6 +2,14 @@
 A gitops terraform deployment, secure, fast, always avaliable, run standalone.
 
 How to start with?
+create a new ssh key
+
+aws ec2 create-key-pair --key-name terraform --query 'KeyMaterial' --output text > ~/.ssh/terraform.pem
+
+
+chmod 400  ~/.ssh/terraform.pem
+
+
 
 1 - Create manualy a s3 bucket to save your terraform state, set values in backend.tf file, region and BucketName.
 you access aws console web into s3 services, create bucket.
