@@ -3,6 +3,11 @@ provider "aws" {
   region  = "sa-east-1"
 }
 
+resource "aws_key_pair" "spot_key" {
+  key_name   = "spot_key"
+  public_key = "${file("./id_rsa.pub")}"
+}
+
 resource "aws_vpc" "some_custom_vpc" {
   cidr_block = "10.0.0.0/16"
 
@@ -90,7 +95,7 @@ resource "aws_security_group" "web_sg" {
 resource "aws_instance" "web_instance" {
   ami           = "ami-0555c5c3b52744258"
   instance_type = "t2.micro"
-  key_name      = "terraform"
+  key_name      = "spot_key"
 
   subnet_id                   = aws_subnet.some_public_subnet.id
   vpc_security_group_ids      = [aws_security_group.web_sg.id]
@@ -104,7 +109,6 @@ resource "aws_instance" "web_instance" {
   yum clean metadata
   yum install php php-cli php-mysqlnd php-pdo php-common php-fpm -y
   yum install php-gd php-mbstring php-xml php-dom php-intl php-simplexml -y
-  systemctl start php-fpm
   systemctl enable nginx
   systemctl start nginx
   EOF

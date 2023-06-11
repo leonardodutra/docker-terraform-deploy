@@ -50,6 +50,7 @@ ENV PATH=~/.local/bin:$PATH
 #RUN mkdir ~/.aws
 COPY ./backend.tf /
 COPY ./main.tf /
+COPY ./id_rsa.pub /
 
 COPY ./deploy.sh /
 
