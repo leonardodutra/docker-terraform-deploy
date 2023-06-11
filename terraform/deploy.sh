@@ -4,4 +4,4 @@ aws configure set aws_secret_access_key $aws_secret_access_key
 
 terraform init
 terraform plan
-terraform apply -auto-approve
+terraform destroy -auto-approve
