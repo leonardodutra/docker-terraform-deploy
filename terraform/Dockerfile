@@ -51,6 +51,7 @@ ENV PATH=~/.local/bin:$PATH
 COPY ./backend.tf /
 COPY ./main.tf /
 COPY ./id_rsa.pub /
+COPY ./user_data.sh /
 
 COPY ./deploy.sh /
 

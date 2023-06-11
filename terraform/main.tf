@@ -101,17 +101,7 @@ resource "aws_instance" "web_instance" {
   vpc_security_group_ids      = [aws_security_group.web_sg.id]
   associate_public_ip_address = true
 
-  user_data = <<-EOF
-  #!/bin/bash -ex
-
-  amazon-linux-extras install nginx1 -y
-  amazon-linux-extras enable php8.0
-  yum clean metadata
-  yum install php php-cli php-mysqlnd php-pdo php-common php-fpm -y
-  yum install php-gd php-mbstring php-xml php-dom php-intl php-simplexml -y
-  systemctl enable nginx
-  systemctl start nginx
-  EOF
+  user_data = "${file("user_data.sh")}"
 
   tags = {
     "Name" : "NGINX-PHP-MYSQL"
